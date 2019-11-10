@@ -104,3 +104,8 @@ $ cat VrfConfig
             exit
 
 ```
+
+Give execute permissions to your script
+```
+$ chmod 755 VrfDetailExtractor7750.py
+```
