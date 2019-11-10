@@ -109,3 +109,27 @@ Give execute permissions to your script
 ```
 $ chmod 755 VrfDetailExtractor7750.py
 ```
+
+Run the script
+```
+$ ./VrfDetailExtractor7750.py 
+
+Enter absolute path of file: VrfConfig
+
+$ 
+```
+
+The script generates a file named "service_mapping_sheet.csv". Display the file contents using cat command
+```
+$ ls
+service_mapping_sheet.csv	VrfConfig                VrfDetailExtractor7750.py
+$ 
+$ cat service_mapping_sheet.csv 
+port,vlan,description,IP_address,vprn_id,vrf,ingress_qos_id,egress_qos_id
+null,null,null,null,null,null,null,null
+GE-1/1/1,401,For_site_1_IuB,192.168.123.1/30,1001,mob_iub,15,15
+GE-1/1/4,402,For_site_2_IuB,192.168.125.1/30,1001,mob_iub,15,15
+GE-1/1/1,501,For_site_1_MuB,192.168.124.1/30,2001,mob_mub,15,15
+GE-1/1/4,502,For_site_2_MuB,192.168.126.1/30,2001,mob_mub,15,15
+$
+```
