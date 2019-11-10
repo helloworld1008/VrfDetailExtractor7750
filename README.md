@@ -8,3 +8,9 @@ It extracts the following details:
 - IP address of the interface
 - VRF ID
 - Ingress and Egress QoS policy applied on the VRF interface
+
+## Requirements
+Linux machine with python 2.7 installed
+
+## How to use
+Create a file and copy the VRF definition section from the Nokia SR 7750 router configuration to this file
