@@ -14,3 +14,93 @@ Linux machine with python 2.7 installed
 
 ## How to use
 Create a file and copy the VRF definition section from the Nokia SR 7750 router configuration to this file
+
+```
+$ touch VrfConfig
+$
+$ cat VrfConfig
+        vprn 1001 name "mob_iub" customer 1001 create
+            description "mob_iub"
+            vrf-import "mob_iub_Import"
+            vrf-export "mob_iub_Export"
+            autonomous-system 100
+            route-distinguisher 2.2.2.2:1
+            auto-bind-tunnel
+                resolution-filter
+                    ldp
+                exit
+                resolution filter
+            exit
+            enable-bgp-vpn-backup ipv4 ipv6
+            interface "GE-1/1/1:401" create
+                description "For_site_1_IuB"
+                address 192.168.123.1/30
+                sap 1/1/1:401 create
+                    description "For_site_1_IuB"
+                    ingress
+                        qos 15
+                    exit
+                    egress
+                        qos 15
+                    exit
+                    dist-cpu-protection "dist-cpu-arp"
+                exit
+            exit
+            interface "GE-1/1/4:402" create
+                description "For_site_2_IuB"
+                address 192.168.125.1/30
+                sap 1/1/4:402 create
+                    description "For_site_2_IuB"
+                    ingress
+                        qos 15
+                    exit
+                    egress
+                        qos 15
+                    exit
+                    dist-cpu-protection "dist-cpu-arp"
+                exit
+            exit
+
+        vprn 2001 name "mob_mub" customer 2001 create
+            description "mob_mub"
+            vrf-import "mob_mub_Import"
+            vrf-export "mob_mub_Export"
+            autonomous-system 100
+            route-distinguisher 2.2.2.2:2
+            auto-bind-tunnel
+                resolution-filter
+                    ldp
+                exit
+                resolution filter
+            exit
+            enable-bgp-vpn-backup ipv4 ipv6
+            interface "GE-1/1/1:501" create
+                description "For_site_1_MuB"
+                address 192.168.124.1/30
+                sap 1/1/1:501 create
+                    description "For_site_1_MuB"
+                    ingress
+                        qos 15
+                    exit
+                    egress
+                        qos 15
+                    exit
+                    dist-cpu-protection "dist-cpu-arp"
+                exit
+            exit
+            interface "GE-1/1/4:502" create
+                description "For_site_2_MuB"
+                address 192.168.126.1/30
+                sap 1/1/4:502 create
+                    description "For_site_2_MuB"
+                    ingress
+                        qos 15
+                    exit
+                    egress
+                        qos 15
+                    exit
+                    dist-cpu-protection "dist-cpu-arp"
+                exit
+            exit
+
+```
